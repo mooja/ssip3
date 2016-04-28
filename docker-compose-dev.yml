@@ -6,10 +6,8 @@ volumes:
 
 services:
   postgres:
-    build: ./compose/postgres
-    volumes:
-      - postgres_data_dev:/var/lib/postgresql/data
-      - postgres_backup_dev:/backups
+    # build: ./compose/postgres
+    image: postgres:9.5
     environment:
       - POSTGRES_USER=ssip3
 
@@ -23,7 +21,7 @@ services:
     environment:
       - POSTGRES_USER=ssip3
     volumes:
-      - ./app:/app
+      - ./app:/app:ro
     ports:
       - "8000:8000"
     links:
