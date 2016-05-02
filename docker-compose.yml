@@ -22,6 +22,7 @@ services:
     # image: mooja/ssip3_django
     volumes:
       - ./app:/app:ro
+      - ./run:/run/gunicorn
     user: django
     depends_on:
       - postgres
