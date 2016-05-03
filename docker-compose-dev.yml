@@ -12,6 +12,7 @@ services:
       - POSTGRES_USER=ssip3
 
   django:
+      # image: mooja/ssip3_django:v01
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile-dev
