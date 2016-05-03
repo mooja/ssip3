@@ -64,3 +64,6 @@ tests/.hitch
 
 # MailHog binary
 mailhog
+
+# vagrant files
+.vagrant
