@@ -1,0 +1,18 @@
+---
+
+- name: install supervisord
+  apt: name={{ item }} update_cache=yes force=yes state=installed cache_valid_time=3600
+  with_items:
+    - build-essential
+    - supervisor
+
+- name: Create the Supervisor config file
+  template: src=supervisor_config.j2
+            dest=/etc/supervisor/conf.d/{{ application_username }}.conf
+            backup=yes
+
+- name: Re-read the Supervisor config files
+  supervisorctl: name={{ application_username }} state=present
+
+- name: Restart Supervisor
+  supervisorctl: name={{ application_username }} state=restarted

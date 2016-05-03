@@ -1,0 +1,17 @@
+# vim: sw=2:noai
+---
+- name: Install Base Packages
+  hosts: webapp
+  remote_user: root
+  become: yes
+
+  roles:
+
+    - base
+    - docker
+    - role: app
+      project_name: "staging.ssip209.org"
+      application_username: "ssip3"
+      nginx_server_name: "staging.ssip209.org"
+      git_repo: "https://github.com/mooja/ssip3"
+      git_branch: "master"

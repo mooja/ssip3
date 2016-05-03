@@ -1,0 +1,44 @@
+---
+
+- name: Install Nginx
+  apt: name=nginx state=installed
+  tags: packages
+
+# - name: Copy the SSL certificate to the remote server
+#   copy: content="{{ ssl_crt }}" dest={{ ssl_dest_dir }}/{{ application_username }}.crt
+#   notify: restart nginx
+
+# - name: Copy the SSL private key to the remote server
+#   copy: content="{{ ssl_key }}" dest={{ ssl_dest_dir }}/{{ application_username }}.key
+#   notify: restart nginx
+
+- name: Create the Nginx configuration file
+  template: src=nginx_site_config.j2
+            dest=/etc/nginx/sites-available/{{ nginx_server_name }}
+            backup=yes
+  notify: reload nginx
+
+- name: Create the no-default Nginx configuration file
+  template: src=nginx_no-default.j2
+            dest=/etc/nginx/sites-available/no-default
+            backup=yes
+  notify: reload nginx
+
+- name: Ensure that the default site is disabled
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: reload nginx
+
+- name: Ensure that the application site is enabled
+  file: src=/etc/nginx/sites-available/{{ nginx_server_name }}
+        dest=/etc/nginx/sites-enabled/{{ nginx_server_name }}
+        state=link
+  notify: reload nginx
+
+- name: make sure the no-default site is enabled
+  file: src=/etc/nginx/sites-available/no-default
+        dest=/etc/nginx/sites-enabled/no-default
+        state=link
+  notify: reload nginx
+
+- name: Ensure Nginx service is started
+  service: name=nginx state=started enabled=yes

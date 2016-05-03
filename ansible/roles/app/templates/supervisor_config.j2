@@ -1,0 +1,7 @@
+[program:{{ application_username }}]
+command = docker-compose up
+directory = {{ project_path }}
+numprocs = 1
+; user = {{ gunicorn_user }}
+stdout_logfile = {{ application_log_file }}
+redirect_stderr = true
