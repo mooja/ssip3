@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'ckeditor',  # wysiwyg editor
 )
 
 # Apps specific for this project go here.
@@ -232,3 +233,8 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
+CKEDITOR_CONFIGS = {
+  'default': {
+    'toolbar': 'Basic',
+  },
+}
