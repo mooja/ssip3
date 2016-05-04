@@ -22,7 +22,7 @@ services:
     environment:
       - POSTGRES_USER=ssip3
     volumes:
-      - ./app:/app:ro
+      - ./app:/app
     ports:
       - "8000:8000"
     links:

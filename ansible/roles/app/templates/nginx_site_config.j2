@@ -1,4 +1,4 @@
-upstream {{ application_name }}_wsgi_server {
+upstream {{ application_username }}_wsgi_server {
   # fail_timeout=0 means we always retry an upstream even if it failed
   # to return a good HTTP response (in case the Unicorn master nukes a
   # single worker for timing out).
@@ -22,7 +22,7 @@ server {
         proxy_set_header Host $http_host;
         proxy_redirect off;
 
-        proxy_pass http://{{ application_name }}_wsgi_server;
+        proxy_pass http://{{ application_username }}_wsgi_server;
         break;
     }
 }
