@@ -19,7 +19,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: ./compose/django/Dockerfile
-    image: mooja/ssip3_django:v01
+    image: mooja/ssip3_django:v02
     volumes:
       - ./app:/app:ro
       - ./run:/run/gunicorn
