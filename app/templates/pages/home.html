@@ -21,9 +21,9 @@
                     <nav>
                         <ul>
                             <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'members:member_list' %}">Members</a></li>
                             {% comment %}
                             <li><a href="{% url 'pages:page-detail' "about" %}">About SSIP</a></li>
-                            <li><a href="{% url 'members:member-list' %}">Members</a></li>
                             <li><a href="{% url 'pages:page-detail' "services" %}">Service Providers</a></li>
                             <li><a href="{% url 'pages:page-detail' "newsletter" %}">Newsletter</a></li>
                             {% endcomment %}

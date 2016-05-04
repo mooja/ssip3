@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content_wrapper %}
+<!-- content container -->
+
+    <div class="container">
+      <section class="main-content">
+        {% block content %}
+        <h3> section heading </h3>
+        <p>Consectetur perferendis magni voluptatem eaque nihil. Explicabo quidem pariatur assumenda iusto facilis vitae? Deserunt blanditiis ullam vitae obcaecati explicabo repellendus laboriosam! Recusandae id reprehenderit quibusdam accusantium iure quos facere vel incidunt, vero suscipit ipsa. Placeat quibusdam repellat illum qui a perferendis. Saepe praesentium ex optio aperiam dolorum quo. Incidunt veritatis.</p>
+        <p>Sit amet modi modi repellat voluptatem doloremque illo. Doloremque molestiae possimus sit fuga voluptatum consequuntur nisi qui mollitia porro! Voluptatibus dicta velit consequatur consectetur quos voluptatem, harum. Ipsa consequuntur error labore facilis reiciendis culpa qui? Aspernatur vitae molestiae quibusdam quaerat voluptate? Rerum quasi sit similique accusamus deserunt sapiente fuga id perspiciatis? Nemo cupiditate voluptatibus at illo autem! Expedita similique ullam nobis dignissimos voluptatem, repellat exercitationem? Iste ex officia eum nesciunt autem ipsum perferendis. Modi esse.</p>
+        <p>Sit eum repudiandae saepe suscipit quibusdam. Beatae inventore odio placeat veniam fugit amet! Consequuntur labore rerum perferendis eaque cupiditate ullam reprehenderit ad? Quae quaerat accusamus necessitatibus fugit doloremque, accusantium facere!</p>
+        {% endblock content %}
+      </section>
+
+      <aside class="main-aside">
+        <h2>Contents</h2>
+        <!-- <h3>Page Title</h3> -->
+        {% block sidebar %}
+        <ul>
+          <a href="#"><li>Reporting bugs </li></a>
+          <a href="#"><li>Help with documentation</li></a>
+          <li> All Issues </li>
+        </ul>
+        {{ sidebar_html|safe }}
+        {% endblock sidebar %}
+      </aside>
+    </div>
+
+{% endblock content_wrapper %}

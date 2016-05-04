@@ -1,0 +1,59 @@
+{% extends "base_sidebar.html" %}
+
+{% block title %}Members{% endblock %}
+
+{% load static %}
+
+{% block splash %}
+    SSIP 209 Members
+{% endblock %}
+
+{% block sidebar %}
+    <ul>
+        {% for member in member_list %}
+        <li><a href="#{{ member.id }}">{{ member.last_name }}, {{ member.first_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock sidebar %}
+
+{% block content %}
+<form role="form">
+        <button type="button" class="btn btn-lg btn-default" onclick="location.href='{% url 'members:member_list_pdf'%}'">Printable Version</button>
+</form>
+{% for member in member_list %}
+    <h3 class="media-heading name" id="{{ member.id }}">
+        {{ member.last_name }}, {{ member.first_name }}
+    </h3>
+
+    {% if member.address or member.town %}
+    <p class="address">{{ member.address }}
+    {% if member.town %}, {{ member.town }} NY {% endif %}
+    </p>
+    {% endif %}
+
+    {% if member.homephone %}
+    <p class="homephone">(Home) {{ member.homephone }}</p>
+    {% endif %}
+
+    {% if member.cellphone %}
+    <p class="cellphone">(Cell) {{ member.cellphone }}</p>
+    {% endif %}
+
+    {% if member.email %}
+    <p class="email"><a href="mailto:{{ member.email }}">{{ member.email }}</a></p>
+    {% endif %}
+
+    {% if member.hobbies %}
+    <p class="hobbies"><strong>My Hobbies</strong>: {{ member.hobbies }}</p>
+    {% endif %}
+
+    {% if member.canhelp %}
+    <p class="canhelp"><strong>I can help with</strong>: {{ member.canhelp }}</p>
+    {% endif %}
+
+    {% if member.needhelp %}
+    <p class="needhelp"><strong>I could use help with</strong>: {{ member.needhelp }}</p>
+    {% endif %}
+<hr>
+{% endfor %}
+{% endblock content %}

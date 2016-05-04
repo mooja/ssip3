@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}User: {{ member.get_full_name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>{{ member.get_full_name }}</h2>
+      <p> {{ member.fist_name }}</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}
