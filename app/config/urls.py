@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^members/', include('members.urls', namespace='members')),
+    url(r'^flatpages/', include('flatpages.urls', namespace='flatpages')),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

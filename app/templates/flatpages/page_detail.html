@@ -1,0 +1,17 @@
+{% extends "base_sidebar.html" %}
+
+{% block splash %}
+<h1>{{ page.title }}</h1>
+{% endblock %}
+
+{% block content %}
+    {{ page.text|safe }}
+{% endblock %}
+
+{% if page.toc %}
+    {% block sidebar %}
+    <div class="toc">
+         {{ page.toc|safe }}
+     </div>
+    {% endblock %}
+{% endif %}
