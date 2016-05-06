@@ -12,6 +12,6 @@
     - role: app
       project_name: "staging.ssip209.org"
       application_username: "ssip3"
-      nginx_server_name: "staging.ssip209.org"
+      # nginx_server_name: "staging.ssip209.org"
       git_repo: "https://github.com/mooja/ssip3"
       git_branch: "master"
