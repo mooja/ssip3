@@ -16,11 +16,6 @@
   file: path="{{project_path}}/logs" state=directory mode=0777
   notify: reload nginx
 
-- name: build docker container
-  command: /usr/local/bin/docker-compose build
-  args:
-    chdir: "{{ project_path }}"
-
 - name: copy local .env file
   copy: src=.env dest="{{ project_path}}/app/.env"
 
@@ -31,15 +26,6 @@
 
 - name: wait 5 seconds
   pause: seconds=5 
-
-- name: make migrations
-  command: /usr/local/bin/docker-compose run django python manage.py makemigrations
-  args:
-    chdir: "{{ project_path }}"
-  notify: restart application
-
-- name: wait 3 seconds
-  pause: seconds=3 
 
 - name: migrate
   command: /usr/local/bin/docker-compose run django python manage.py migrate
