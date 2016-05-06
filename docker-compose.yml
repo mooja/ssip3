@@ -7,22 +7,22 @@ volumes:
 
 services:
   postgres:
-    image: postgres:9.5
-    # build: ./compose/postgres
-    # image: mooja/ssip3_postgres
+    image: mooja/postgres:latest
+    build: ./compose/postgres
     volumes:
      - postgres_data:/var/lib/postgresql/data
-     - postgres_backup:/backups
+     - ./backups:/backups
     # env_file: .env
 
   django:
-    # build:
-    #   context: .
-    #   dockerfile: ./compose/django/Dockerfile
-    image: mooja/ssip3_django:v02
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: mooja/ssip3_django:latest
     volumes:
       - ./app:/app:ro
       - ./run:/run/gunicorn
+      - ./logs:/logs
     user: django
     depends_on:
       - postgres

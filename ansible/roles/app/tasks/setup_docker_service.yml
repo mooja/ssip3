@@ -8,6 +8,14 @@
   file: path="{{project_path}}/run" state=directory mode=0777
   notify: reload nginx
 
+- name: make sure there's a /backups directory in the app's root dir
+  file: path="{{project_path}}/backups" state=directory mode=0777
+  notify: reload nginx
+
+- name: make sure there's a /logs directory in the app's root dir
+  file: path="{{project_path}}/logs" state=directory mode=0777
+  notify: reload nginx
+
 - name: build docker container
   command: /usr/local/bin/docker-compose build
   args:

@@ -6,8 +6,10 @@ volumes:
 
 services:
   postgres:
-    # build: ./compose/postgres
-    image: postgres:9.5
+    build: ./compose/postgres
+    # image: postgres:9.5
+    volumes:
+     - ./backups:/backups
     environment:
       - POSTGRES_USER=ssip3
 
