@@ -1,6 +1,6 @@
 import markdown
 
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 from .models import FlatPage
 
 
@@ -26,3 +26,13 @@ class PageDetailView(DetailView):
             context['page'].toc = toc
 
         return context
+
+
+class AboutView(TemplateView):
+    template_name = 'flatpages/about.html'
+
+class ServiceProvidersView(TemplateView):
+    template_name = 'flatpages/service-providers.html'
+
+# class NewsLetterView(TemplateView):
+#     template_name = 'flatpages/newsletter.html'
