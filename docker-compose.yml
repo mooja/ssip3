@@ -12,7 +12,8 @@ services:
     volumes:
      - postgres_data:/var/lib/postgresql/data
      - ./backups:/backups
-    # env_file: .env
+    environment:
+      - POSTGRES_USER=ssip3
 
   django:
     build:
@@ -28,14 +29,8 @@ services:
       - postgres
       - redis
     command: /gunicorn.sh
-    # env_file: .env
-
-  # nginx:
-  #   build: ./compose/nginx
-  #   depends_on:
-  #     - django
-  #   ports:
-  #     - "0.0.0.0:80:80"
+    environment:
+      - POSTGRES_USER=ssip3
 
   redis:
     image: redis:3.0
