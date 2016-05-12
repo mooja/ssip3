@@ -12,7 +12,9 @@
             backup=yes
 
 - name: Re-read the Supervisor config files
+  become: yes
   supervisorctl: name={{ application_username }} state=present
 
 - name: Restart Supervisor
+  become: yes
   supervisorctl: name={{ application_username }} state=restarted
