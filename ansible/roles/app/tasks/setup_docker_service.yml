@@ -23,6 +23,7 @@
   command: /usr/local/bin/docker-compose pull
   args:
     chdir: "{{ project_path }}"
+  notify: reload supervisor
 
 - name: wait 5 seconds
   pause: seconds=5 
@@ -31,4 +32,4 @@
   command: /usr/local/bin/docker-compose run django python manage.py migrate
   args:
     chdir: "{{ project_path }}"
-  notify: restart application
+  notify: reload supervisor

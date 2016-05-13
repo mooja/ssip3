@@ -6,6 +6,7 @@
        dest={{ project_path }}
        accept_hostkey=yes
        depth=1
+  notify: reload supervisor
 
 - name: Delete all .pyc files
   command: find . -name '*.pyc' -delete

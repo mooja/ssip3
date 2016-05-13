@@ -8,3 +8,7 @@
 
 - name: reload nginx
   service: name=nginx state=reloaded
+
+- name: reload supervisor
+  become: yes
+  supervisorctl: name={{ application_username }} state=restarted
