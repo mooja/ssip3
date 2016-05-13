@@ -11,13 +11,11 @@ class Member(models.Model):
     # contact information
     town = models.CharField(max_length=400, null=True, blank=True)
     address = models.CharField(max_length=400, null=True, blank=True)
-    zipcode = models.CharField(max_length=400, null=True, blank=True)
     email = models.EmailField(max_length=200, null=True, blank=True)
-    homephone = models.CharField(max_length=20, null=True, blank=True)
-    cellphone = models.CharField(max_length=20, null=True, blank=True)
+    homephone = models.CharField(max_length=200, null=True, blank=True)
+    cellphone = models.CharField(max_length=200, null=True, blank=True)
 
     # prefernces
-    occupation = models.CharField(max_length=1500, null=True, blank=True)
     hobbies = models.CharField(max_length=1500, null=True, blank=True)
     canhelp = models.CharField(max_length=1500, null=True, blank=True)
     needhelp = models.CharField(max_length=1500, null=True, blank=True)
