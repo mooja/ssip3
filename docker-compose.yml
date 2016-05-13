@@ -3,9 +3,11 @@ version: '2'
 volumes:
   postgres_data: {}
   postgres_backup: {}
-  # envf: {}
 
 services:
+  redis:
+    image: redis:3.0
+
   postgres:
     image: mooja/postgres:latest
     build: ./compose/postgres
@@ -25,12 +27,9 @@ services:
       - ./run:/run/gunicorn
       - ./logs:/logs
     user: django
+    command: /gunicorn.sh
     depends_on:
       - postgres
       - redis
-    command: /gunicorn.sh
     environment:
       - POSTGRES_USER=ssip3
-
-  redis:
-    image: redis:3.0

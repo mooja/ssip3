@@ -1,0 +1,9 @@
+---
+- name: create a backups folder
+  file: path="{{ project_path }}/backups" state=directory mode=0755
+
+- name: copy backup command
+  template: src=backup.sh.j2 dest={{ project_path }}/backup.sh
+
+- name: create backup cron job
+  cron: name=ssip3_backup minute=0 hour="0,12" job="sh {{ project_path }}/backup.sh"
