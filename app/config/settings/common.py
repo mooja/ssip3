@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-    'ckeditor',  # wysiwyg editor
+    'django_summernote',  # wysiwyg editor
 )
 
 # Apps specific for this project go here.
@@ -234,8 +234,84 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
-CKEDITOR_CONFIGS = {
-  'default': {
-    'toolbar': 'Basic',
-  },
+
+# summernote config
+
+SUMMERNOTE_CONFIG = {
+    # Using SummernoteWidget - iframe mode
+    'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
+
+    # Using Summernote Air-mode
+    'airMode': False,
+
+    # Use native HTML tags (`<b>`, `<i>`, ...) instead of style attributes
+    # (Firefox, Chrome only)
+    'styleWithTags': False,
+
+    # Set text direction : 'left to right' is default.
+    'direction': 'ltr',
+
+    # Change editor size
+    # 'width': '100%',
+    # 'height': '480',
+
+    # Use proper language setting automatically (default)
+    'lang': None,
+
+    # Or, set editor language/locale forcely
+    #'lang': 'ko-KR',
+
+    # Customize toolbar buttons
+    # 'toolbar': [
+    #     ['style', ['style']],
+    #     ['style', ['bold', 'italic', 'underline', 'clear']],
+    #     ['para', ['ul', 'ol', 'height']],
+    #     ['insert', ['link']],
+    # ],
+
+    # Need authentication while uploading attachments.
+    'attachment_require_authentication': True,
+
+    # Set `upload_to` function for attachments.
+    # 'attachment_upload_to': my_custom_upload_to_func(),
+
+    # Set custom storage class for attachments.
+    # 'attachment_storage_class': 'my.custom.storage.class.name',
+
+    # Set custom model for attachments (default: 'django_summernote.Attachment')
+    # 'attachment_model': 'my.custom.attachment.model', # must inherit 'django_summernote.AbstractAttachment'
+
+    # Set common css/js media files
+    # 'external_css': (                                             
+    #     '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',      
+    # ),                                                                          
+    # 'external_js': (                                              
+    #     '//code.jquery.com/jquery-1.9.1.min.js',                                
+    #     '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',        
+    # ),
+    # 'internal_css': (
+    #     static_url('django_summernote/summernote.css'),
+    # ),
+    # 'internal_js': (
+    #     static_url('django_summernote/jquery.ui.widget.js'),
+    #     static_url('django_summernote/jquery.iframe-transport.js'),
+    #     static_url('django_summernote/jquery.fileupload.js'),
+    #     static_url('django_summernote/summernote.min.js'),
+    # ),
+
+    # You can add custom css/js for SummernoteWidget.
+    # 'css': (
+    # ),
+    # 'js': (
+    # ),
+
+    # And also for SummernoteInplaceWidget.
+    # !!! Be sure to put {{ form.media }} in template before initiate summernote.
+    # 'css_for_inplace': (
+    # ),
+    # 'js_for_inplace': (
+    # ),
+
+    # You can disable file upload feature.
+    'disable_upload': False,
 }

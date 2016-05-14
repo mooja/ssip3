@@ -11,6 +11,8 @@ class NewsEntry(TimeStampedModel):
     text = models.TextField(blank=True)
     author = models.CharField(max_length=200, null=True, blank=True)
 
+    pub_date = models.DateField(null=False)
+
     NEWSCHOICES = Choices('news', 'membernews')
     newstype = StatusField(choices_name='NEWSCHOICES')
 

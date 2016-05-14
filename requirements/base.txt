@@ -47,5 +47,5 @@ redis>=2.10.0
 
 # Your custom requirements go here
 reportlab==3.3.0
-django-ckeditor==5.0.3
+django-summernote
 Markdown==2.6.6
