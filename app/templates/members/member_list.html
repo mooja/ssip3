@@ -25,35 +25,43 @@
         {{ member.last_name }}, {{ member.first_name }}
     </h3>
 
+    <address>
     {% if member.address or member.town %}
-    <p class="address">{{ member.address }}
+    {{ member.address }}
     {% if member.town %}, {{ member.town }} NY {% endif %}
-    </p>
+    <br>
     {% endif %}
 
     {% if member.homephone %}
-    <p class="homephone">(Home) {{ member.homephone }}</p>
+    (Home) {{ member.homephone }} <br>
     {% endif %}
 
     {% if member.cellphone %}
-    <p class="cellphone">(Cell) {{ member.cellphone }}</p>
+    (Cell) {{ member.cellphone }} <br>
     {% endif %}
 
     {% if member.email %}
-    <p class="email"><a href="mailto:{{ member.email }}">{{ member.email }}</a></p>
+    <a href="mailto:{{ member.email }}">{{ member.email }}</a>
     {% endif %}
+    </address>
 
+    <dl>
     {% if member.hobbies %}
-    <p class="hobbies"><strong>My Hobbies</strong>: {{ member.hobbies }}</p>
+        <dt>My Hobbies</dt> 
+        <dd> {{ member.hobbies }}</dd>
+        <br>
     {% endif %}
-
     {% if member.canhelp %}
-    <p class="canhelp"><strong>I can help with</strong>: {{ member.canhelp }}</p>
+        <dt>I can help with</dt>
+        <dd> {{ member.canhelp }} </dd>
+        <br>
     {% endif %}
 
     {% if member.needhelp %}
-    <p class="needhelp"><strong>I could use help with</strong>: {{ member.needhelp }}</p>
+        <dt>I could use help with</dt> 
+        <dd>{{ member.needhelp }}</dd>
     {% endif %}
+    </dl>
 <hr>
 {% endfor %}
 {% endblock content %}
