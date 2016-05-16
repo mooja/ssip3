@@ -6,6 +6,12 @@ upstream {{ application_username }}_wsgi_server {
   server unix:{{ project_path }}/run/gunicorn.sock fail_timeout=0;
 }
 
+server {
+    listen 80;
+    server_name www.{{nginx_server_name}};
+    return 301 $scheme://{{nginx_server_name}}$request_uri;
+}
+
 
 server {
     listen      80;

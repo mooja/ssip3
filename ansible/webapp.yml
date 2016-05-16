@@ -10,8 +10,7 @@
     - base
     - docker
     - role: app
-      project_name: "staging.ssip209.org"
-      application_username: "ssip3"
-      # nginx_server_name: "staging.ssip209.org"
+      project_name: "ssip209.org"
+      application_username: "ssip209"
       git_repo: "https://github.com/mooja/ssip3"
       git_branch: "master"
