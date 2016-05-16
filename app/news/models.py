@@ -16,6 +16,9 @@ class NewsEntry(TimeStampedModel):
     NEWSCHOICES = Choices('news', 'membernews')
     newstype = StatusField(choices_name='NEWSCHOICES')
 
+    def get_absolute_url(self):
+        return "/"
+
     def __str__(self):
         return self.title
 
