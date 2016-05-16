@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'flatpages:about' %}">About SSIP</a></li>
+      <li><a href="{% url 'members:member_list' %}">Members</a></li>
+      <li><a href="{% url 'flatpages:service-providers' %}">Service Providers</a></li>
+      {% comment %}
+      <li><a href="{% url 'pages:page-detail' "newsletter" %}">Newsletter</a></li>
+      {% endcomment %}
+  </ul>
+</nav>

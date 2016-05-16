@@ -17,13 +17,7 @@
 
       <aside class="main-aside">
         <h2>Contents</h2>
-        <!-- <h3>Page Title</h3> -->
         {% block sidebar %}
-        <ul>
-          <a href="#"><li>Reporting bugs </li></a>
-          <a href="#"><li>Help with documentation</li></a>
-          <li> All Issues </li>
-        </ul>
         {{ sidebar_html|safe }}
         {% endblock sidebar %}
       </aside>
