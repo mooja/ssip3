@@ -8,32 +8,19 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps import Sitemap
 
 from views import HomeView
 
-from news.models import NewsEntry
-
-
-class NewsSiteMap(Sitemap):
-    changefreq = "never"
-    priority = 0.5
-
-    def items(self):
-        return NewsEntry.objects.all().order_by('-pub_date')
-
-    def lastmod(self, obj):
-        return obj.pub_date
-
+from .sitemaps import StaticViewSitmap, NewsSiteMap
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     url(r'^members/', include('members.urls', namespace='members')),
     url(r'^flatpages/', include('flatpages.urls', namespace='flatpages')),
 
     # sitemaps
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'news': NewsSiteMap}},
+    url(r'^sitemap\.xml$', sitemap, 
+        {'sitemaps': {'static': StaticViewSitmap}},
         name='django.contrib.sitemaps.views.sitemap'),
 
     # Django Admin, use {% url 'admin:index' %}
