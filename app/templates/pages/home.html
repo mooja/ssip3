@@ -27,40 +27,11 @@
                     <p><a href="/about" class="btn btn-success">Learn More</a></p>
                 </div>
             </div>
-        </div>
-            {% comment %}
-            {% if upcoming_occurrence_list %}
             <section class="events">
-                <div class="container">
-                    <ul class="events-list">
-                        {% for oc in upcoming_occurrence_list %}
-                        <li>
-                            <div class="group">
-                                <div class="event-date">
-                                    <div class="month">
-                                        {{ oc.start_time|date:"b" }}
-                                    </div>
-                                    <div class="date">
-                                        {{ oc.start_time|date:"d" }}
-                                    </div>
-                                    <div class="weekday">
-                                        {{ oc.start_time|date:"l" }}
-                                    </div>
-                                </div>
-                                <div class="event-description">
-                                    <h3 class="event-title">{{ oc.event.title }}</h3>
-                                    <h4 class="event-location">{{ oc.location.title }}</h4>
-                                    <h4 class="event-time">{{ oc.start_time|date:"fa" }}</h4>
-                                </div>
-                            </div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+              <div class="container" id="calendar" >
+              </div>
             </section>
-            {% endif %}
         </div>
-            {% endcomment %}
         <div class="container">
             <div class="home-news">
                 <div class="news-information">
@@ -105,6 +76,19 @@
             <p>© SSIP 209 - Settled and Serving in Place, 2011-2015. </p>
             <p>Design by Max Shkurygin</p>
         </footer>
+
+          <div id="authorize-div" style="display: none">
+            <span>Authorize access to Google Calendar API</span>
+            <!--Button for the user to click to initiate auth sequence -->
+            <button id="authorize-button" onclick="handleAuthClick(event)">
+              Authorize
+            </button>
+          </div>
+
+        <script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/events-cal.js'%}"></script>
+        <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
     </body>
 </html>
 
