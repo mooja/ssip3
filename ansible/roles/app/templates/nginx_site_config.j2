@@ -8,19 +8,27 @@ upstream {{ application_username }}_wsgi_server {
 
 server {
     listen 80;
-    server_name www.{{nginx_server_name}};
-    return 301 $scheme://{{nginx_server_name}}$request_uri;
+    server_name {{ nginx_server_name }} www.{{nginx_server_name}};
+    return 301 https://{{nginx_server_name}}$request_uri;
 }
 
 
 server {
-    listen      80;
+    listen      443 ssl;
+
     server_name         {{ nginx_server_name }};
+
+    ssl_certificate {{ project_path }}/certs/fullchain.pem;
+    ssl_certificate_key {{ project_path }}/certs/privkey.pem;
 
     client_max_body_size 4G;
 
     access_log {{ nginx_access_log_file }};
     error_log {{ nginx_error_log_file }};
+
+    location /media/ {
+        root {{ project_path }}/app/;
+    }
 
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
