@@ -64,12 +64,22 @@ function listUpcomingEvents() {
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 5,
+    'maxResults': 10,
     'orderBy': 'startTime'
   });
 
   request.execute(function(resp) {
     var events = resp.items;
+    var uniq_events = {};
+    events.forEach(function(e) {
+        if(!(e.summary in uniq_events))
+            uniq_events[e.summary] = e;
+    });
+
+    events = Object.keys(uniq_events).map(function(k) {
+        return uniq_events[k];
+    });
+
     if (events.length > 0) {
       var events_ul = $('<ul class="events-list"></li>');
       for (i = 0; i < events.length; i++) {
