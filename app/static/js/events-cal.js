@@ -70,6 +70,7 @@ function listUpcomingEvents() {
 
   request.execute(function(resp) {
     var events = resp.items;
+
     var uniq_events = {};
     events.forEach(function(e) {
         if(!(e.summary in uniq_events))
@@ -89,36 +90,42 @@ function listUpcomingEvents() {
           when = event.start.date;
         }
 
-        var sdate = moment(event.start.dateTime);
-
-        var event_date_month_div = $('<div class="month">' + sdate.format('MMM') + '</div>');
-        var event_date_date_div = $('<div class="date">' + sdate.format('D') + '</div>');
-        var event_date_weekday_div = $('<div class="weekday">' + sdate.format('ddd') + '</div>');
-        var event_date_div = $('<div class="event-date"></div>');
-        event_date_div.append(event_date_month_div);
-        event_date_div.append(event_date_date_div);
-        event_date_div.append(event_date_weekday_div);
-
-        var event_description_title = $('<h3 class="event-title">' + event.summary + '</h3>');
-        var event_description_location = $('<h4 class="event-location">' + event.location.split(',')[0] + '</h4>');
-        var event_description_time = $('<h4 class="event-time">' + sdate.format('h:mma') + '</h4>');
-        var event_description_div = $('<div class="event-description"></div');
-        event_description_div.append(event_description_title);
-        event_description_div.append(event_description_location);
-        event_description_div.append(event_description_time);
-
-        event_group_div = $('<div class="group"></div>');
-        event_group_div.append(event_date_div);
-        event_group_div.append(event_description_div);
-
-        var event_li = $('<li></li>');
-        event_li.append(event_group_div);
-
+        event_li = buildEventListItem(event);
+        console.log(event_li);
         events_ul.append(event_li);
       } // end for
       $('#calendar').append(events_ul);
     } 
   });
+}
+
+function buildEventListItem(event) {
+    var sdate = moment(event.start.dateTime);
+
+    var event_date_month_div = $('<div class="month">' + sdate.format('MMM') + '</div>');
+    var event_date_date_div = $('<div class="date">' + sdate.format('D') + '</div>');
+    var event_date_weekday_div = $('<div class="weekday">' + sdate.format('ddd') + '</div>');
+    var event_date_div = $('<div class="event-date"></div>');
+    event_date_div.append(event_date_month_div);
+    event_date_div.append(event_date_date_div);
+    event_date_div.append(event_date_weekday_div);
+
+    var event_description_title = $('<h3 class="event-title">' + event.summary + '</h3>');
+    var event_description_location = $('<h4 class="event-location">' + event.location.split(',')[0] + '</h4>');
+    var event_description_time = $('<h4 class="event-time">' + sdate.format('h:mma') + '</h4>');
+    var event_description_div = $('<div class="event-description"></div');
+    event_description_div.append(event_description_title);
+    event_description_div.append(event_description_location);
+    event_description_div.append(event_description_time);
+
+    event_group_div = $('<div class="group"></div>');
+    event_group_div.append(event_date_div);
+    event_group_div.append(event_description_div);
+
+    var event_li = $('<li></li>');
+    event_li.append(event_group_div);
+
+    return event_li;
 }
 
 /**
