@@ -34,5 +34,8 @@ class AboutView(TemplateView):
 class ServiceProvidersView(TemplateView):
     template_name = 'flatpages/service-providers.html'
 
+class MinutesView(TemplateView):
+    template_name = 'flatpages/minutes.html'
+
 # class NewsLetterView(TemplateView):
 #     template_name = 'flatpages/newsletter.html'
