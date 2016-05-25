@@ -1,13 +1,20 @@
 {% extends "base_sidebar.html" %}
 {% block splash %} SSIP Minutes{% endblock %}
 
-{% block content %}
+{% block sidebar %}
+<ul>
+    {% for minutes_entry in minutes_entry_list %}
+    <li><a href="#{{ minutes_entry.pk }}">{{ minutes_entry.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock sidebar %}
 
+{% block content %}
 {% for minutes_entry in minutes_entry_list %}
 <div class="news-entry">
-    <article class="panel-body">
+    <article id="{{ minutes_entry.pk }}" class="panel-body">
         <h3>{{ minutes_entry.title|safe }} <span class="text-muted">{% if minutes_entry.author %} by {{ minutes_entry.author }} {% endif %}</h3> 
-        <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ minutes_entry.created|date:"F jS, Y" }}</p>
+        <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ minutes_entry.pub_date|date:"F jS, Y" }}</p>
         {{ minutes_entry.text|safe }}
     </article>
 </div>
