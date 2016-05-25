@@ -1,6 +1,8 @@
 import markdown
 
 from django.views.generic import DetailView, TemplateView
+
+from news.models import NewsEntry
 from .models import FlatPage
 
 
@@ -37,5 +39,9 @@ class ServiceProvidersView(TemplateView):
 class MinutesView(TemplateView):
     template_name = 'flatpages/minutes.html'
 
-# class NewsLetterView(TemplateView):
-#     template_name = 'flatpages/newsletter.html'
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['minutes_entry_list'] = NewsEntry.objects\
+            .filter(title__icontains='minutes')\
+            .order_by('-pub_date')
+        return context

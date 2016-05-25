@@ -3,8 +3,13 @@
 
 {% block content %}
 
-<h2 id="april-2016"> April Meeting Minutes </h2>
-<div>
+{% for minutes_entry in minutes_entry_list %}
+<div class="news-entry">
+    <article class="panel-body">
+        <h3>{{ minutes_entry.title|safe }} <span class="text-muted">{% if minutes_entry.author %} by {{ minutes_entry.author }} {% endif %}</h3> 
+        <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ minutes_entry.created|date:"F jS, Y" }}</p>
+        {{ minutes_entry.text|safe }}
+    </article>
 </div>
-
+{% endfor %}
 {% endblock %}
