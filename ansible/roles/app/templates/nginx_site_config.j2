@@ -27,7 +27,7 @@ server {
     error_log {{ nginx_error_log_file }};
 
     location /media/ {
-        root {{ project_path }}/app/;
+        root {{ project_path }}/;
     }
 
     location / {
