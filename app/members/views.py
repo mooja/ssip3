@@ -69,18 +69,19 @@ class PasswordForm(forms.Form):
 def build_frames(pwidth, pheight, ncols):
     frames = []
     for i in range(ncols):
-        f = Frame(x1=i*(pwidth / ncols),
+        f = Frame(x1=(i*((pwidth-30) / ncols)+15),
                   y1=0,
-                  width=(pwidth / ncols),
-                  height=pheight,
-                  leftPadding=10,
-                  rightPadding=4,
-                  topPadding=2,
-                  bottomPadding=2,
+                  width=((pwidth-30) / ncols),
+                  height=pheight+2,
+                  leftPadding=15,
+                  rightPadding=15,
+                  topPadding=15,
+                  bottomPadding=15,
                   showBoundary=True)
         frames.append(f)
+    frames[0].showBoundary=False
+    frames[3].showBoundary=False
     return frames
-
 
 def member_list_pdf(request):
     response = HttpResponse(content_type='application/pdf')
