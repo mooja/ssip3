@@ -1,20 +1,12 @@
 ---
 
-- name: make sure there's a /log directory in the app's root dir
-  file: path="{{project_path}}/logs" state=directory mode=0777
-  notify: reload nginx
-
-- name: make sure there's a /run directory in the app's root dir
-  file: path="{{project_path}}/run" state=directory mode=0777
-  notify: reload nginx
-
-- name: make sure there's a /backups directory in the app's root dir
-  file: path="{{project_path}}/backups" state=directory mode=0777
-  notify: reload nginx
-
-- name: make sure there's a /logs directory in the app's root dir
-  file: path="{{project_path}}/logs" state=directory mode=0777
-  notify: reload nginx
+- name: create extra directory structure
+  file: path="{{project_path}}/{{item}}" state=directory mode=0777
+  with_items:
+    - logs
+    - run
+    - backups
+    - media
 
 - name: copy local .env file
   copy: src=.env dest="{{ project_path}}/app/.env"

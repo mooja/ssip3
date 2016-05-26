@@ -26,6 +26,7 @@ services:
       - ./app:/app:ro
       - ./run:/run/gunicorn
       - ./logs:/logs
+      - ./media:/app_media
     user: django
     command: /gunicorn.sh
     depends_on:

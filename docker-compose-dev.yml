@@ -25,6 +25,7 @@ services:
       - POSTGRES_USER=ssip3
     volumes:
       - ./app:/app
+      - ./media:/app_media
     ports:
       - "8000:8000"
     links:

@@ -8,9 +8,8 @@ COPY ./requirements /requirements
 RUN pip install -r /requirements/production.txt
 
 RUN groupadd -r django && useradd -r -g django django
-COPY app /app
-RUN mkdir /staticfiles /run/gunicorn /logs
-RUN chown -R django /app /staticfiles /run/gunicorn /logs
+RUN mkdir /app /staticfiles /run/gunicorn /logs /app_media
+RUN chown -R django /app /staticfiles /run/gunicorn /logs /app_media
 
 COPY ./compose/django/gunicorn.sh /gunicorn.sh
 COPY ./compose/django/entrypoint.sh /entrypoint.sh
