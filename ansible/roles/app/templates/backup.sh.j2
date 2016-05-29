@@ -2,5 +2,5 @@
 
 cd "{{ project_path }}"
 echo 'creating backup'
-docker-compose run postgres backup
+/usr/local/bin/docker-compose run postgres backup
 echo 'backup created'
