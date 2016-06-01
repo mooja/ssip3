@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from django.contrib.sitemaps.views import sitemap
@@ -17,6 +18,10 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^members/', include('members.urls', namespace='members')),
     url(r'^flatpages/', include('flatpages.urls', namespace='flatpages')),
+
+    # robots.txt
+    url(r'^robots\.txt$', 
+        lambda r: HttpResponse('User-agent: *\nDisallow: /members/*', content_type='text/plain')),
 
     # sitemaps
     url(r'^sitemap\.xml$', sitemap, 
