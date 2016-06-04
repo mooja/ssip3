@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'django_summernote',  # wysiwyg editor
+    'captcha',  # wysiwyg editor
 )
 
 # Apps specific for this project go here.
@@ -236,6 +237,10 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
+
+RECAPTCHA_PUBLIC_KEY = '6LffvSETAAAAAHgwGVSdctl5Zc-2oSmjV-9I94Yc'
+RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
+NOCAPTCHA = True
 
 # summernote config
 

@@ -10,12 +10,14 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from django.contrib.sitemaps.views import sitemap
 
+from views import HomeView, contact_us
 from views import HomeView
 
 from .sitemaps import StaticViewSitmap, NewsSiteMap
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^contact_us$', contact_us, name='contact_us'),
     url(r'^members/', include('members.urls', namespace='members')),
     url(r'^flatpages/', include('flatpages.urls', namespace='flatpages')),
 

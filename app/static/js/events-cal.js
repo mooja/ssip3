@@ -71,3 +71,9 @@ function buildEventListItem(event) {
 
     return event_li;
 }
+
+$(document).ready(function() {
+   $('#contact-us').on('click', function(e) {
+        $('#message-form').toggleClass('hidden');
+   });
+});
