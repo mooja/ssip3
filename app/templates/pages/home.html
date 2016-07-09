@@ -54,7 +54,7 @@
                         {% for news_entry in membernews_entry_list %}
                         <div class="news-entry">
                             <article class="panel-body">
-                                <h3>{{ news_entry.title|safe }} <span class="text-muted">{% if news_entry.author %} by {{ news_entry.author }} {% endif %}</h3> 
+                                <h3>{{ news_entry.title|safe }} {% if news_entry.author %} <span class="text-muted"> by {{ news_entry.author }} </span> {% endif %}</h3> 
                                 <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ news_entry.created|date:"F jS, Y" }}</p>
                                 {{ news_entry.text|safe }}
                             </article>
@@ -68,9 +68,7 @@
                             <article class="panel-body">
                                 <h3>{{ news_entry.title }}</h3> 
                                 <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ news_entry.created|date:"F jS, Y" }}</p>
-                                <p>
                                 {{ news_entry.text|safe }}
-                                </p>
                             </article>
                         </div>
                         {% endfor %}
@@ -80,11 +78,9 @@
                         {% for news_entry in news_entry_list_small %}
                         <div class="news-entry">
                             <article class="panel-body">
-                                <h3>{{ news_entry.title|safe }} <span class="text-muted">{% if news_entry.author %} by {{ news_entry.author }} {% endif %}</h3> 
+                                <h3>{{ news_entry.title|safe }} {% if news_entry.author %} <span class="text-muted"> by {{ news_entry.author }} </span> {% endif %}</h3> 
                                 <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ news_entry.created|date:"F jS, Y" }}</p>
-                                <p>
                                 {{ news_entry.text|safe }}
-                                </p>
                             </article>
                         </div>
                         {% endfor %}
