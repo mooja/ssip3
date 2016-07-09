@@ -75,6 +75,20 @@
                         </div>
                         {% endfor %}
                     </section>
+                    <section class='news-information-small'>
+                        <h2 class="text-center">Recently...</h2>
+                        {% for news_entry in news_entry_list_small %}
+                        <div class="news-entry">
+                            <article class="panel-body">
+                                <h3>{{ news_entry.title|safe }} <span class="text-muted">{% if news_entry.author %} by {{ news_entry.author }} {% endif %}</h3> 
+                                <p class="post-date"><span class="glyphicon glyphicon-calendar"></span> {{ news_entry.created|date:"F jS, Y" }}</p>
+                                <p>
+                                {{ news_entry.text|safe }}
+                                </p>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    </section>
                 </div>
             </div>
         </div>
