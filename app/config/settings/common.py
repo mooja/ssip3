@@ -263,7 +263,7 @@ SUMMERNOTE_CONFIG = {
     # 'height': '480',
 
     # Use proper language setting automatically (default)
-    'lang': None,
+    'lang': 'uk-UA',
 
     # Or, set editor language/locale forcely
     #'lang': 'ko-KR',
