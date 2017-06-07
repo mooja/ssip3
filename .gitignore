@@ -67,3 +67,8 @@ mailhog
 
 # vagrant files
 .vagrant
+
+# user uploaded media
+# backups
+backups
+media
